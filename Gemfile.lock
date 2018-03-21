@@ -126,6 +126,8 @@ GEM
     orm_adapter (0.5.0)
     parsley-rails (2.7.0.0)
       railties (>= 3.0.0)
+    petergate (1.8.1)
+      activerecord (> 4.0.0)
     pg (1.0.0)
     pony (1.12)
       mail (>= 2.0)
@@ -251,6 +253,7 @@ DEPENDENCIES
   jquery-rails
   listen (>= 3.0.5, < 3.2)
   parsley-rails
+  petergate
   pg
   pony (~> 1.11)
   puma (~> 3.11)
