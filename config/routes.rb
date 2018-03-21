@@ -1,41 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
-  get 'purchases/index'
-  get 'purchases/new'
-  get 'purchases/create'
-  get 'purchases/show'
-  get 'purchases/edit'
-  get 'purchases/update'
-  get 'purchases/destroy'
-  get 'user_items/index'
-  get 'user_items/new'
-  get 'user_items/create'
-  get 'user_items/show'
-  get 'user_items/edit'
-  get 'user_items/update'
-  get 'user_items/destroy'
-  get 'items/index'
-  get 'items/new'
-  get 'items/create'
-  get 'items/show'
-  get 'items/edit'
-  get 'items/update'
-  get 'items/destroy'
-  get 'ratings/index'
-  get 'ratings/new'
-  get 'ratings/create'
-  get 'ratings/show'
-  get 'ratings/edit'
-  get 'ratings/update'
-  get 'ratings/destroy'
-  get 'users/index'
-  get 'users/new'
-  get 'users/create'
-  get 'users/show'
-  get 'users/edit'
-  get 'users/update'
-  get 'users/destroy'
 
+  resources :purchases
+  resources :user_items
+  resources :items
+  resources :ratings
+  resources :users, only: [:index, :show]
   root 'home#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
