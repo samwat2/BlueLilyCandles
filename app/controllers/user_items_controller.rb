@@ -6,6 +6,8 @@ class UserItemsController < ApplicationController
   end
 
   def create
+    @user = User.find(params[:user_id][:item_id])
+    @item = Item.find(params[:item_id][:user_id])
   end
 
   def show
