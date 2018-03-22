@@ -8,6 +8,7 @@ gem 'pony', '~> 1.11'
 gem 'zxcvbn-ruby', require: 'zxcvbn'
 gem 'pg', group: :production
 gem 'bootstrap', '~> 4.0.0'
+gem 'popper_js', '~> 1.12.9'
 gem 'jquery-rails'
 gem 'parsley-rails'
 gem 'devise'
