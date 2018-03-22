@@ -256,6 +256,7 @@ DEPENDENCIES
   petergate
   pg
   pony (~> 1.11)
+  popper_js (~> 1.12.9)
   puma (~> 3.11)
   rails (~> 5.2.0.rc1)
   rspec-rails (~> 3.7)

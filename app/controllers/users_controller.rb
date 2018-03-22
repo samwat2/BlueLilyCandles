@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def index
+  	# reset_session
   	@users = User.all
   end
 
