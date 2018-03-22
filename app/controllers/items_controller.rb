@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  access all: [:show, :index], user: {except: [:destroy, :new, :create, :update, :edit]}, root_admin: :all
   def index
     @items = Item.all
   end
