@@ -1,7 +1,10 @@
 <div class="col-4" id="items-list">
 	<div class="card border-danger mb-3" style="max-width: 18rem;" id="card">
 		<div class="item" id="item-<%= item.id %>">
-			<div class="card-header bg-transparent border-danger"><%= item.name %></div>
+			<div class="card-header bg-transparent border-danger">
+				<%= item.name %>
+				<%= button_to "Favorite!", user_items_path, params: {user_item: {item_id: item.id, favorited: !item.favorited?(current_user)}}, class: "btn btn-dark", remote: true  %>
+				</div>
 			<div class="card-body text-danger">
 				<h5 class="card-title">$<%= item.price %></h5>
 				 <% if item.image.attached? %>
@@ -15,8 +18,10 @@
 								<div class="card-body">
 									<p class="card text"><%= item.description %></p>
 									<p class="card text">Price: $<%= item.price %></p>
-									<%= link_to "Edit Items", edit_item_path(item) %>
-									<%= link_to "Delete", item, method: :delete, remote: true %>
+									<% if logged_in?(:root_admin) %>
+										<%= link_to "Edit Items", edit_item_path(item) %>
+										<%= link_to "Delete", item, method: :delete, remote: true %>
+									<% end %>
 								</div>
 							</div>
 						</div>
