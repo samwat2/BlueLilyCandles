@@ -16,6 +16,7 @@
 									<p class="card text"><%= item.description %></p>
 									<p class="card text">Price: $<%= item.price %></p>
 									<%= link_to "Edit Items", edit_item_path(item) %>
+									<%= link_to "Delete", item, method: :delete, remote: true %>
 								</div>
 							</div>
 						</div>
