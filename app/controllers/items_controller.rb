@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
     @item = current_user.items.new(item_params)
     respond_to do |format|
       if @item.save
-        format.html {redirect_to @items}
+        format.html {redirect_to @item}
         format.js
       end
     end

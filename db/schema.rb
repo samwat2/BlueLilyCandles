@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_03_22_230600) do
+ActiveRecord::Schema.define(version: 2018_03_22_234632) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -42,31 +42,31 @@ ActiveRecord::Schema.define(version: 2018_03_22_230600) do
   end
 
   create_table "purchases", force: :cascade do |t|
-    t.integer "user_items_id"
+    t.integer "user_item_id"
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_items_id"], name: "index_purchases_on_user_items_id"
+    t.index ["user_item_id"], name: "index_purchases_on_user_item_id"
   end
 
   create_table "ratings", force: :cascade do |t|
-    t.integer "users_id"
-    t.integer "items_id"
+    t.integer "user_id"
+    t.integer "item_id"
     t.integer "stars"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["items_id"], name: "index_ratings_on_items_id"
-    t.index ["users_id"], name: "index_ratings_on_users_id"
+    t.index ["item_id"], name: "index_ratings_on_item_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 
   create_table "user_items", force: :cascade do |t|
-    t.integer "items_id"
-    t.integer "users_id"
+    t.integer "item_id"
+    t.integer "user_id"
     t.boolean "favorites"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["items_id"], name: "index_user_items_on_items_id"
-    t.index ["users_id"], name: "index_user_items_on_users_id"
+    t.index ["item_id"], name: "index_user_items_on_item_id"
+    t.index ["user_id"], name: "index_user_items_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
