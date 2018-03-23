@@ -7,9 +7,9 @@ class User < ApplicationRecord
    petergate(roles: [:root_admin], multiple: true)                                      ##
   ############################################################################################ 
  
- has_many :user_items
+ has_many :user_items, dependent: :destroy
  has_many :items, through: :user_items
- has_many :ratings
+ has_many :ratings, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

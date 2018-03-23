@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = current_user.items.new(item_params)
+    @item = Item.new(item_params)
     respond_to do |format|
       if @item.save
         format.html {redirect_to @item}
@@ -23,17 +23,17 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = current_user.items.find(params[:id])
+    @item = Item.find(params[:id])
   end
 
   def update
-    @item = current_users.items.find(params[:id])
+    @item = Item.find(params[:id])
     @item.update_attributes(item_params)
     redirect_to @item
   end
 
   def destroy
-    @item = current_user.items.find(params[:id])
+    @item = Item.find(params[:id])
     respond_to do |format|
       if @item.destroy
         format.html {redirect_to users_path}
