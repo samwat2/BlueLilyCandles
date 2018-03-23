@@ -30,13 +30,16 @@
           <% if user_signed_in? %>
             <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "nav-item nav-link" %>
             <%= link_to "Favorites", new_user_item_path, class: "nav-item nav-link" %>
-            <%= link_to "Add Item(s)", new_item_path, class: "nav-item nav-link" %>
+            <% if logged_in?(:root_admin) %>
+              <%= link_to "Add Item(s)", new_item_path , class: "nav-item nav-link" %>
+              <a class="nav-item nav-link" href="#">Create Sales Page</a>
+            <% end %>
             <%= link_to "Checkout", new_purchase_path, class: "nav-item nav-link" %>
           <% else %>
             <%= link_to "Sign-up", new_user_registration_path, class: "nav-item nav-link" %>
             <%= link_to "Login", new_user_session_path, class: "nav-item nav-link"  %>
           <% end %>
-          <%= link_to "Cart", users_path, class: "nav-item nav-link" %>
+          <%= link_to "Cart", current_user, class: "nav-item nav-link" %>
         </div>
       </div>
     </nav>

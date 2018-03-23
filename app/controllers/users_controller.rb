@@ -1,11 +1,10 @@
 class UsersController < ApplicationController
+	before_action :authenticate_user!, only: [:show]
   def index
-  	# reset_session
   	@users = User.all
   end
 
   def show
   	@user = User.find(params[:id])
   end
-
 end

@@ -12,8 +12,8 @@ class ItemsController < ApplicationController
     @item = current_user.items.new(item_params)
     respond_to do |format|
       if @item.save
-        format.html {redirect_to items_path}
-        format.js #vies/items/create.js.erb
+        format.html {redirect_to @item}
+        format.js
       end
     end
   end
@@ -23,7 +23,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = current_users.items.find(params[:id])
+    @item = current_user.items.find(params[:id])
   end
 
   def update
@@ -44,6 +44,6 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :price, :description)
+    params.require(:item).permit(:name, :price, :description, :image)
   end
 end

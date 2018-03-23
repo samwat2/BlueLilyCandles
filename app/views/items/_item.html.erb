@@ -1,0 +1,29 @@
+<div class="col-4" id="items-list">
+	<div class="card border-danger mb-3" style="max-width: 18rem;" id="card">
+		<div class="item" id="item-<%= item.id %>">
+			<div class="card-header bg-transparent border-danger"><%= item.name %></div>
+			<div class="card-body text-danger">
+				<h5 class="card-title">$<%= item.price %></h5>
+				 <% if item.image.attached? %>
+					 <%= image_tag item.image, class: "rounded img-thumbnail" %>
+				 <% end %>
+				<div class="dropdown">
+					<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#card-info<%= item.id %>" aria-expanded="false" aria-controls="card-info<%= item.id %>">More</button>
+					<div class="row">
+						<div class="col">
+							<div class="collapse multi-collapse" id="card-info<%= item.id %>">
+								<div class="card-body">
+									<p class="card text"><%= item.description %></p>
+									<p class="card text">Price: $<%= item.price %></p>
+									<%= link_to "Edit Items", edit_item_path(item) %>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="card-footer bg-transparent border-danger">
+		</div>
+	</div>
+</div>
