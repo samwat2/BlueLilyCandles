@@ -3,7 +3,16 @@
 		<div class="item" id="item-<%= item.id %>">
 			<div class="card-header bg-transparent border-danger">
 				<%= item.name %>
-				<%= button_to "Favorite!", user_items_path, params: {user_item: {item_id: item.id, favorited: !item.favorited?(current_user)}}, class: "btn btn-dark", remote: true  %>
+				<%= form_with model: UserItem.new, class: "form-useritem", remote: true do |f|%>
+					<% if item.favorited?(current_user) %>
+						<%= f.submit "", type: :image, src: asset_path("heart.svg"), class: "favorite-button" %>
+					<% else %>
+						<%= f.submit "", type: :image, src: asset_path("heart-outline.svg"), class: "favorite-button" %>
+					<% end %>
+					<%= f.hidden_field :item_id, value: item.id %>
+					<%= f.hidden_field :favorited, value: !item.favorited?(current_user), class: 'hidden-favorited' %>
+				<% end %>
+
 				</div>
 			<div class="card-body text-danger">
 				<h5 class="card-title">$<%= item.price %></h5>
