@@ -1,6 +1,26 @@
-<h1>Items#index</h1>
-<div class="container">
-	<div class="row">
-		<%= render @items %>
-	</div>		
+<div class="home-body">
+	<div class="wrapper">
+		<nav id="sidebar">
+			<div class="sidebar-header">
+				<h2>Blue Lily Candles</h2>
+			</div>
+			<ul class="list-group">
+				<li class="list-group-item">Favorites?</li>
+				<% for item in @items %>
+					<li class="list-group-item" id="info-item-<%= item.id %>">
+						<p><%= item.name %> ,
+						<%= item.description %> ,
+						$<%= item.price %></p>
+					</li>
+				<% end %>
+			</ul>	
+		</nav>
+		<div id="content">
+			<div class="container">
+				<div class="row">
+					<%= render @items %>
+				</div>
+			</div>
+	  </div>
+	</div>
 </div>

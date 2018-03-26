@@ -1,0 +1,6 @@
+<% if @user_item.favorited %>
+	$('#item-<%= @user_item.item.id %>').find('.form-useritem').find('.favorite-button').attr('src', "<%= asset_path('heart.svg') %>");
+<% else %>
+	$('#item-<%= @user_item.item.id %>').find('.form-useritem').find('.favorite-button').attr('src', "<%= asset_path('heart-outline.svg') %>");
+<% end %>
+$('#item-<%= @user_item.item.id %>').find('.form-useritem').find('.hidden-favorited').val("<%= !@user_item.favorited %>")

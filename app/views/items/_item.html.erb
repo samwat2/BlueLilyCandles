@@ -1,22 +1,40 @@
 <div class="col-4" id="items-list">
 	<div class="card border-danger mb-3" style="max-width: 18rem;" id="card">
 		<div class="item" id="item-<%= item.id %>">
-			<div class="card-header bg-transparent border-danger"><%= item.name %></div>
+			<div class="card-header bg-transparent border-danger">
+				<%= item.name %>
+				<% if user_signed_in? %>
+					<%= form_with model: UserItem.new, class: "form-useritem", remote: true do |f|%>
+						<% if item.favorited?(current_user) %>
+							<%= f.submit "", type: :image, src: asset_path("heart.svg"), class: "favorite-button" %>
+						<% else %>
+							<%= f.submit "", type: :image, src: asset_path("heart-outline.svg"), class: "favorite-button" %>
+						<% end %>
+						<%= f.hidden_field :item_id, value: item.id %>
+						<%= f.hidden_field :favorited, value: !item.favorited?(current_user), class: 'hidden-favorited' %>
+					<% end %>
+				<% end %>
+				</div>
 			<div class="card-body text-danger">
 				<h5 class="card-title">$<%= item.price %></h5>
 				 <% if item.image.attached? %>
 					 <%= image_tag item.image, class: "rounded img-thumbnail" %>
 				 <% end %>
 				<div class="dropdown">
-					<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#card-info<%= item.id %>" aria-expanded="false" aria-controls="card-info<%= item.id %>">More</button>
+					<button class="btn btn-primary navbar-btn" type="button" data-toggle="collapse" data-target="#card-info<%= item.id %>" aria-expanded="false" aria-controls="card-info<%= item.id %>" id="sidebarCollapse"><span class="glyphicon glyphicon-align-left"></span>More</button>
 					<div class="row">
 						<div class="col">
 							<div class="collapse multi-collapse" id="card-info<%= item.id %>">
 								<div class="card-body">
 									<p class="card text"><%= item.description %></p>
 									<p class="card text">Price: $<%= item.price %></p>
-									<%= link_to "Edit Items", edit_item_path(item) %>
-									<%= link_to "Delete", item, method: :delete, remote: true %>
+									<% if logged_in?(:root_admin) %>
+										<%= link_to "Edit Items", edit_item_path(item) %>
+										<%= link_to "Delete", item, method: :delete, remote: true %>
+									<% end %>
+									<% if user_signed_in? %>
+										<%= link_to "Add to Cart", new_purchase_path %>
+									<% end %>
 								</div>
 							</div>
 						</div>
