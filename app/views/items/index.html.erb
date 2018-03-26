@@ -6,12 +6,13 @@
 			</div>
 			<ul class="list-group">
 				<li class="list-group-item">Favorites?</li>
-				<% @items.each do |item| %>
-					<li class="list-group-item">
-						<p id="item-<%= item.id %>"><%= item.name %> $<%= item.price %></p>
+				<% for item in @items %>
+					<li class="list-group-item" id="info-item-<%= item.id %>">
+						<p><%= item.name %> ,
+						<%= item.description %> ,
+						$<%= item.price %></p>
 					</li>
 				<% end %>
-				<li class="list-group-item" id="item"></li>
 			</ul>	
 		</nav>
 		<div id="content">
