@@ -32,6 +32,9 @@
 										<%= link_to "Edit Items", edit_item_path(item) %>
 										<%= link_to "Delete", item, method: :delete, remote: true %>
 									<% end %>
+									<% if user_signed_in? %>
+										<%= link_to "Add to Cart", new_purchase_path %>
+									<% end %>
 								</div>
 							</div>
 						</div>
