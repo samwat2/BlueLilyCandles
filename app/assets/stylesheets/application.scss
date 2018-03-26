@@ -11,7 +11,11 @@
  * It is generally better to create a new file per style scope.
  *
  */
+@import 'users';
 @import 'items';
+@import 'ratings';
+@import 'purchases';
+@import 'home';
 @import 'user_items';
 @import "bootstrap";
 @import 'parsley';
@@ -43,7 +47,7 @@ html, body {
 
 @media all and (max-width: 720px){
   body {
-    background: url('https://img.etsystatic.com/il/10b32f/1404404159/il_570xN.1404404159_g9db.jpg?version=0');
+  background: url('https://img.etsystatic.com/il/10b32f/1404404159/il_570xN.1404404159_g9db.jpg?version=0');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
