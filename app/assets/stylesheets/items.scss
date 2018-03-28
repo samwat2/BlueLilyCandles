@@ -3,29 +3,30 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .wrapper {
-	display: flex;
-	align-items: stretch;
+  display: flex;
+  align-items: stretch;
 }
 
 #sidebar {
-	min-width: 250px;
-	max-width: 250px;
-	min-height: 100vh;
-	background-color: rgba(0, 0, 0, 0.3);
+  min-width: 250px;
+  max-width: 250px;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: relative;
 }
 
 #sidebar ul li {
-	display: block;
-	padding: 10px;
-	background: inherit;
-	color: white;
+  display: block;
+  padding: 10px;
+  background: inherit;
+  color: white;
 }
 .sidebar-header {
-	padding: 20px;
+  padding: 20px;
 }
 
-#sidebar.active {
-	margin-left: -250px;
+#sidebar.inactive {
+  margin-left: -250px;
 }
 
 @media (max-width: 768px) {
@@ -37,3 +38,13 @@
     }
 }
 
+#close-sidebar {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  cursor: pointer;
+
+  &:hover {
+    color: white;
+  }
+}
