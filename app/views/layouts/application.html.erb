@@ -3,7 +3,7 @@
   <head>
     <title>BlueLily</title>
     <%= csrf_meta_tags %>
-
+    
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -38,8 +38,10 @@
           <% else %>
             <%= link_to "Sign-up", new_user_registration_path, class: "nav-item nav-link" %>
             <%= link_to "Login", new_user_session_path, class: "nav-item nav-link"  %>
+          <% end %> 
+          <%= link_to 'cart', :class => 'nav-item nav-link' do %>
+            <i class="material-icons">shopping_cart</i>
           <% end %>
-          <%= link_to " " , current_user, class: "glyphicon glyphicon-shopping-cart", aria_hidden: true %>
         </div>
       </div>
     </nav>

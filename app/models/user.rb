@@ -7,9 +7,20 @@ class User < ApplicationRecord
    petergate(roles: [:root_admin], multiple: true)                                      ##
   ############################################################################################ 
  
- has_many :user_items, dependent: :destroy
- has_many :items, through: :user_items
- has_many :ratings, dependent: :destroy
+  has_many :given_ratings, class_name: 'Rating', foreign_key: 'user_id', dependent: :destroy
+  has_many :user_items, dependent: :destroy
+  has_many :items, through: :user_items
+  has_many :ratings, dependent: :destroy
+
+  validates :first_name, presence: true 
+  validates :last_name, presence: true
+
+  # def full_name
+  #   first_name = User.first_name
+  #   last_name = User.last_name
+  #   return first_name + last_name
+  # end
+  #current_user & User is undefined variable. or first_name & last_name is an undefined method
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

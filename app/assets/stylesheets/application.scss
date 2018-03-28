@@ -54,3 +54,12 @@ html, body {
   background-position: center;
   }
 }
+
+.glyphicon {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
