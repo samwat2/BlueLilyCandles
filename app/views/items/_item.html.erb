@@ -1,6 +1,6 @@
 <div class="col-4" id="items-list">
-	<div class="card border-danger mb-3" style="max-width: 18rem;" id="card">
-		<div class="item" id="item-<%= item.id %>">
+	<div class="card border-danger mb-3" id="card">
+		<div class="item" id="item-<%= item.id %>" data-info="<%= {description: item.description, name: item.name, price: item.price}.to_json %>">
 			<div class="card-header bg-transparent border-danger">
 				<%= item.name %>
 				<% if user_signed_in? %>
@@ -21,8 +21,7 @@
 					 <%= image_tag item.image, class: "rounded img-thumbnail" %>
 				 <% end %>
 				<div class="dropdown">
-					<button class="btn btn-primary sidebarCollapse" type="button" data-toggle="sidbar" data-target="info<%= item.id %>" aria-expanded="false" aria-controls="info<%= item.id %>" id="info<%= item.id %>"><span class="glyphicon glyphicon-align-left"></span>More
-					</button>
+					<button class="btn btn-primary navbar-btn sidebarCollapse" type="button" data-toggle="collapse" data-target="#card-info<%= item.id %>" aria-expanded="false" aria-controls="card-info<%= item.id %>"><span class="glyphicon glyphicon-align-left"></span>More</button>
 					<div class="row">
 						<div class="col">
 							<div class="card-body">
