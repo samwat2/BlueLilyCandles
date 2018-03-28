@@ -27,13 +27,15 @@
 						<div class="col">
 							<div class="card-body">
 								<p class="card text">
-									<%= form_with model: Rating.new, id: "form-for-ratings" do |f| %>
-										<div class="ratings-boxes" id="item-<%= item.id %>">
-											<div class="rating-label"><%= f.label :rate %></div>
-											<div class="rating-box"><%= f.select(:stars, [1, 2, 3, 4, 5], {}, class: "square-rating") %></div>
-										</div>
-										<%= hidden_field_tag :item_id, item.id %>
-										<%= f.submit class: "btn btn-primary" %>
+									<% if logged_in?!(:root_admin) %>
+										<%= form_with model: Rating.new, id: "form-for-ratings" do |f| %>
+											<div class="ratings-boxes" id="item-<%= item.id %>">
+												<div class="rating-label"><%= f.label :rate %></div>
+												<div class="rating-box"><%= f.select(:stars, [1, 2, 3, 4, 5], {}, class: "square-rating") %></div>
+											</div>
+											<%= hidden_field_tag :item_id, item.id %>
+											<%= f.submit class: "btn btn-primary" %>
+										<% end %>
 									<% end %>
 									<% if logged_in?(:root_admin) %>
 										<%= link_to "Edit Items", edit_item_path(item) %>

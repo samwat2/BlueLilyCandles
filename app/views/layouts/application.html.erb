@@ -3,7 +3,8 @@
   <head>
     <title>BlueLily</title>
     <%= csrf_meta_tags %>
-    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -39,7 +40,7 @@
             <%= link_to "Sign-up", new_user_registration_path, class: "nav-item nav-link" %>
             <%= link_to "Login", new_user_session_path, class: "nav-item nav-link"  %>
           <% end %> 
-          <%= link_to 'cart', :class => 'nav-item nav-link' do %>
+          <%= link_to current_user, :class => 'nav-item nav-link' do %>
             <i class="material-icons">shopping_cart</i>
           <% end %>
         </div>
