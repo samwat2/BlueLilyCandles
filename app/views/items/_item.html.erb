@@ -21,13 +21,20 @@
 					 <%= image_tag item.image, class: "rounded img-thumbnail" %>
 				 <% end %>
 				<div class="dropdown">
-					<button class="btn btn-primary navbar-btn" type="button" data-toggle="collapse" data-target="#card-info<%= item.id %>" aria-expanded="false" aria-controls="card-info<%= item.id %>" id="sidebarCollapse"><span class="glyphicon glyphicon-align-left"></span>More</button>
+					<button class="btn btn-primary sidebarCollapse" type="button" data-toggle="sidbar" data-target="info<%= item.id %>" aria-expanded="false" aria-controls="info<%= item.id %>" id="info<%= item.id %>"><span class="glyphicon glyphicon-align-left"></span>More
+					</button>
 					<div class="row">
 						<div class="col">
-							<div class="collapse multi-collapse" id="card-info<%= item.id %>">
-								<div class="card-body">
-									<p class="card text"><%= item.description %></p>
-									<p class="card text">Price: $<%= item.price %></p>
+							<div class="card-body">
+								<p class="card text">
+									<%= form_with model: Rating.new, id: "form-for-ratings" do |f| %>
+										<div class="ratings-boxes" id="item-<%= item.id %>">
+											<div class="rating-label"><%= f.label :rate %></div>
+											<div class="rating-box"><%= f.select(:stars, [1, 2, 3, 4, 5], {}, class: "square-rating") %></div>
+										</div>
+										<%= hidden_field_tag :item_id, item.id %>
+										<%= f.submit class: "btn btn-primary" %>
+									<% end %>
 									<% if logged_in?(:root_admin) %>
 										<%= link_to "Edit Items", edit_item_path(item) %>
 										<%= link_to "Delete", item, method: :delete, remote: true %>
@@ -35,7 +42,7 @@
 									<% if user_signed_in? %>
 										<%= link_to "Add to Cart", new_purchase_path %>
 									<% end %>
-								</div>
+							  </p>
 							</div>
 						</div>
 					</div>

@@ -37,3 +37,14 @@
     }
 }
 
+.ratings-boxes {
+	display: inline-flex;
+	
+	.rating-label{
+		font-size: 20px;
+		justify-content: center
+	}
+	.rating-box{
+		display: inline-block;
+	}
+}
