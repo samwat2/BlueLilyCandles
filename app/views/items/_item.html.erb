@@ -1,4 +1,4 @@
-<div class="col-4" id="items-list">
+<div id="items-list">
 	<div class="card border-danger mb-3" id="card">
 		<div class="item" id="item-<%= item.id %>" data-info="<%= {description: item.description, name: item.name, price: item.price}.to_json %>">
 			<div class="card-header bg-transparent border-danger">
@@ -14,7 +14,7 @@
 						<%= f.hidden_field :favorited, value: !item.favorited?(current_user), class: 'hidden-favorited' %>
 					<% end %>
 				<% end %>
-				</div>
+			</div>
 			<div class="card-body text-danger">
 				<h5 class="card-title">$<%= item.price %></h5>
 				 <% if item.image.attached? %>
@@ -24,9 +24,9 @@
 					<button class="btn btn-primary navbar-btn sidebarCollapse" type="button" data-toggle="collapse" data-target="#card-info<%= item.id %>" aria-expanded="false" aria-controls="card-info<%= item.id %>"><span class="glyphicon glyphicon-align-left"></span>More</button>
 					<div class="row">
 						<div class="col">
-							<div class="card-body">
-								<p class="card text">
-									<% if logged_in?!(:root_admin) %>
+							<% if !logged_in?(:root_admin) %>
+								<div class="card-body">
+									<p class="card text">
 										<%= form_with model: Rating.new, id: "form-for-ratings" do |f| %>
 											<div class="ratings-boxes" id="item-<%= item.id %>">
 												<div class="rating-label"><%= f.label :rate %></div>
@@ -35,22 +35,29 @@
 											<%= hidden_field_tag :item_id, item.id %>
 											<%= f.submit class: "btn btn-primary" %>
 										<% end %>
-									<% end %>
-									<% if logged_in?(:root_admin) %>
-										<%= link_to "Edit Items", edit_item_path(item) %>
-										<%= link_to "Delete", item, method: :delete, remote: true %>
-									<% end %>
-									<% if user_signed_in? %>
-										<%= link_to "Add to Cart", new_purchase_path %>
-									<% end %>
-							  </p>
-							</div>
+								  </p>
+								</div>
+							<% end %>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="card-footer bg-transparent border-danger">
+			<% if logged_in?(:root_admin) %>
+			  <%= link_to(edit_item_path(item)) do %>
+	      	<i class="material-icons">edit</i>
+				<% end %>
+				<%= link_to(item, method: :delete, remote: true) do %>
+	      	<i class="material-icons">delete</i>
+				<% end %>
+			<% else %>
+				<% if user_signed_in? %>
+	        <%= link_to(new_purchase_path) do %>
+	          <i class="material-icons">shopping_cart</i>
+	        <% end %>
+				<% end %>
+			<% end %>
 		</div>
 	</div>
 </div>

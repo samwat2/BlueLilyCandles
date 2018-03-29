@@ -1,5 +1,5 @@
 <div class="home-body">
-	<div class="wrapper">
+	<div class="scrolling-wrapper-flexbox">
 		<nav id="sidebar" class="inactive">
 			<span id="close-sidebar">X</span>
 			<div class="sidebar-header">
@@ -17,11 +17,9 @@
 			</ul>	
 		</nav>
 		<div id="content">
-			<div class="container">
-				<div class="row">
-					<%= render @items %>
-				</div>
-			</div>
+			<div class="row">
+				<%= render @items %>				
+			</div>			
 	  </div>
 	</div>
 </div>
