@@ -2,9 +2,37 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.wrapper {
+// .wrapper {
+//   display: flex;
+//   align-items: stretch;
+// }
+
+.scrolling-wrapper-flexbox {
   display: flex;
-  align-items: stretch;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  // overflow-y: hidden;
+  -webkit-overflow-scrolling: touch; //for iphones
+  .row {
+    flex-wrap: nowrap;
+    height: fit-content;
+    // display: 0 0 auto;
+  }
+  #items-list {
+    flex: 0 0 auto;
+  }
+}
+
+#content {
+  height: 400px;
+  display: flex;
+}
+
+
+#items-list {
+  margin: 9px;
+  width: 290px;
+  height: 370px;
 }
 
 #sidebar {
@@ -12,7 +40,8 @@
   max-width: 250px;
   min-height: 100vh;
   background-color: rgba(0, 0, 0, 0.3);
-  position: relative;
+  position: fixed;
+  z-index: 1;
 }
 
 #sidebar ul li {
@@ -36,6 +65,18 @@
     #sidebar.active {
         margin-left: 0;
     }
+}
+
+.ratings-boxes {
+	display: inline-flex;
+	
+	.rating-label{
+		font-size: 20px;
+		justify-content: center
+	}
+	.rating-box{
+		display: inline-block;
+	}
 }
 
 #close-sidebar {
