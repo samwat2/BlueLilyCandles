@@ -2,53 +2,86 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// .wrapper {
-//   display: flex;
-//   align-items: stretch;
-// }
 
-.scrolling-wrapper-flexbox {
+.carousel-cell {
+  // margin: 50px;
   display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  // overflow-y: hidden;
-  -webkit-overflow-scrolling: touch; //for iphones
-  .row {
-    flex-wrap: nowrap;
-    height: fit-content;
-    // display: 0 0 auto;
-  }
-  #items-list {
-    flex: 0 0 auto;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 100%;
+  transition: transform 2s ease;
+  .card{
+    display: block;
+    height: 100%;
+    width: 80%;
+    opacity: 0.6;
+    transform: scale(0.85);
+    filter: blur(5px);
+    background-color: #BFB7B9;
+    transition: opacity 0.3s, transform 0.3s, filter 0.3s, background 0.3s ease;
+    // .img-thumbnail {
+    //   max-width: 100%;
+    // }
   }
 }
 
-#content {
-  height: 400px;
+.carousel-cell.is-selected{
   display: flex;
+  justify-content: center;
+  align-items: center;
+  // width: 351px;
+  // height: auto;
+  .card{
+    opacity: 1;
+    transform: scale(1);
+    filter: none;
+    background-color: #CFDBE5;
+  }
+}
+
+@media screen and ( min-width: 768px ) {
+  .carousel-cell {
+    height: 350px;
+  }
+}
+
+@media screen and ( min-width: 960px ) {
+  .carousel-cell {
+    width: 40%;
+  }
+}
+
+.carousel {
+  height: 85%;
+  justify-content: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -webkit-align-items: center;
+  // background: black;
+  .flickity-viewport {
+    height: 100% !important;
+  }
 }
 
 
-#items-list {
-  margin: 9px;
-  width: 290px;
-  height: 370px;
-}
 
 #sidebar {
   min-width: 250px;
   max-width: 250px;
   min-height: 100vh;
   background-color: rgba(0, 0, 0, 0.3);
-  position: fixed;
+  position: absolute;
   z-index: 1;
+  top: 376px;
 }
 
 #sidebar ul li {
   display: block;
   padding: 10px;
   background: inherit;
-  color: white;
+  color: black;
 }
 .sidebar-header {
   padding: 20px;
@@ -67,18 +100,6 @@
     }
 }
 
-.ratings-boxes {
-	display: inline-flex;
-	
-	.rating-label{
-		font-size: 20px;
-		justify-content: center
-	}
-	.rating-box{
-		display: inline-block;
-	}
-}
-
 #close-sidebar {
   position: absolute;
   top: 5px;
@@ -89,3 +110,16 @@
     color: white;
   }
 }
+
+.ratings-boxes {
+  display: inline-flex;
+  
+  .rating-label{
+    font-size: 20px;
+    justify-content: center
+  }
+  .rating-box{
+    display: inline-block;
+  }
+}
+

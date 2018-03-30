@@ -11,6 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  */
+@import 'flickity';
 @import 'bar-squared';
 @import 'users';
 @import 'items';
@@ -22,9 +23,12 @@
 @import 'parsley';
 
 html, body {
-	background: #FFAFBD; 
-	background: -webkit-linear-gradient(to left, #ffc3a0, #FFAFBD); 
-	background: linear-gradient(to left, #ffc3a0, #FFAFBD);
+	// background: #FFAFBD; 
+	// background: -webkit-linear-gradient(to left, #ffc3a0, #FFAFBD); 
+	// background: linear-gradient(to left, #ffc3a0, #FFAFBD);
+  background: #ECE9E6;
+  background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);
+  background: linear-gradient(to right, #FFFFFF, #ECE9E6);
   width: 100%;
   height: 100%;
 }
