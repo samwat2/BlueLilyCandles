@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-
+  resources :charges
   resources :purchases
   resources :user_items
   resources :items
