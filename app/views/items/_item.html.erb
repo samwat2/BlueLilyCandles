@@ -1,7 +1,7 @@
-<div id="items-list">
-	<div class="card border-danger mb-3" id="card">
+<div class="carousel-cell" id="items-list">
+	<div class="card" id="card">
 		<div class="item" id="item-<%= item.id %>" data-info="<%= {description: item.description, name: item.name, price: item.price}.to_json %>">
-			<div class="card-header bg-transparent border-danger">
+			<div class="card-header bg-transparent border-primary">
 				<%= item.name %>
 				<% if user_signed_in? %>
 					<%= form_with model: UserItem.new, class: "form-useritem", remote: true do |f|%>
@@ -15,49 +15,46 @@
 					<% end %>
 				<% end %>
 			</div>
-			<div class="card-body text-danger">
-				<h5 class="card-title">$<%= item.price %></h5>
+			<div class="card-body text-primary">
+				<h5 class="card-title">$<%= item.price %>
+				<% if logged_in?(:root_admin) %>
+				  <%= link_to(edit_item_path(item)) do %>
+		      	<i class="material-icons">edit</i>
+					<% end %>
+					<%= link_to(item, method: :delete, remote: true) do %>
+		      	<i class="material-icons">delete</i>
+					<% end %>
+				<% else %>
+					<% if user_signed_in? %>
+		        <%= link_to(new_purchase_path) do %>
+		          <i class="material-icons">shopping_cart</i>
+		        <% end %>
+					<% end %>
+				<% end %>
+				<button class="btn btn-primary navbar-btn sidebarCollapse" type="button" data-toggle="collapse" data-target="#card-info<%= item.id %>" aria-expanded="false" aria-controls="card-info<%= item.id %>"><span class="glyphicon glyphicon-align-left"></span>More</button>
+				</h5>
 				 <% if item.image.attached? %>
 					 <%= image_tag item.image, class: "rounded img-thumbnail" %>
 				 <% end %>
-				<div class="dropdown">
-					<button class="btn btn-primary navbar-btn sidebarCollapse" type="button" data-toggle="collapse" data-target="#card-info<%= item.id %>" aria-expanded="false" aria-controls="card-info<%= item.id %>"><span class="glyphicon glyphicon-align-left"></span>More</button>
-					<div class="row">
-						<div class="col">
-							<% if !logged_in?(:root_admin) %>
-								<div class="card-body">
-									<p class="card text">
-										<%= form_with model: Rating.new, id: "form-for-ratings" do |f| %>
-											<div class="ratings-boxes" id="item-<%= item.id %>">
-												<div class="rating-label"><%= f.label :rate %></div>
-												<div class="rating-box"><%= f.select(:stars, [1, 2, 3, 4, 5], {}, class: "square-rating") %></div>
-											</div>
-											<%= hidden_field_tag :item_id, item.id %>
-											<%= f.submit class: "btn btn-primary" %>
-										<% end %>
-								  </p>
-								</div>
-							<% end %>
-						</div>
+				<div class="row">
+					<div class="col">
+						<% if !logged_in?(:root_admin) %>
+							<div class="card-body">
+								<p class="card text">
+									<%= form_with model: Rating.new, id: "form-for-ratings" do |f| %>
+										<div class="ratings-boxes" id="item-<%= item.id %>">
+											<div class="rating-label"><%= f.label :rate %></div>
+											<div class="rating-box"><%= f.select(:stars, [1, 2, 3, 4, 5], {}, class: "square-rating") %></div>
+										</div>
+										<%= hidden_field_tag :item_id, item.id %>
+										<%= f.submit class: "btn btn-primary" %>
+									<% end %>
+							  </p>
+							</div>
+						<% end %>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="card-footer bg-transparent border-danger">
-			<% if logged_in?(:root_admin) %>
-			  <%= link_to(edit_item_path(item)) do %>
-	      	<i class="material-icons">edit</i>
-				<% end %>
-				<%= link_to(item, method: :delete, remote: true) do %>
-	      	<i class="material-icons">delete</i>
-				<% end %>
-			<% else %>
-				<% if user_signed_in? %>
-	        <%= link_to(new_purchase_path) do %>
-	          <i class="material-icons">shopping_cart</i>
-	        <% end %>
-				<% end %>
-			<% end %>
 		</div>
 	</div>
 </div>

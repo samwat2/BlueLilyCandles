@@ -1,25 +1,20 @@
-<div class="home-body">
-	<div class="scrolling-wrapper-flexbox">
-		<nav id="sidebar" class="inactive">
-			<span id="close-sidebar">X</span>
-			<div class="sidebar-header">
-				<h2>Blue Lily Candles</h2>
-			</div>
-			<ul class="list-group">
-				<li class="list-group-item">Favorites?</li>
-				<li class="list-group-item">
-					<p>
-						<div class="name">Name: <span></span></div>
-						<div class="description">Description: <span></span></div>
-						<div class="price">Price: <span></span></div>
-					</p>
-				</li>
-			</ul>	
-		</nav>
-		<div id="content">
-			<div class="row">
-				<%= render @items %>				
-			</div>			
-	  </div>
+<nav id="sidebar" class="inactive">
+	<span id="close-sidebar">X</span>
+	<div class="sidebar-header">
+		<h2>Blue Lily Candles</h2>
 	</div>
-</div>
+	<ul class="list-group">
+		<li class="list-group-item">
+			<p>
+				<div class="name"><u>Name:</u> <span></span></div>
+				<div class="description"><u>Description:</u> <span></span></div>
+				<div class="Rating"><u>Rating:</u> <span></span></div>
+				<div class="price"><u>Price:</u> $<span></span></div>
+			</p>
+		</li>
+	</ul>	
+</nav>
+<div class="carousel js-flickity" data-flickity='{ "groupCells": 1, "initialIndex": 4, "freeScroll": true, "wrapAround": true, "freeScrollFriction": 0.15, "selectedAttraction": 0.01}'>
+	<%= render @items %>	
+</div>							
+
