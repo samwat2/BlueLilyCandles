@@ -26,10 +26,9 @@
 					<% end %>
 				<% else %>
 					<% if user_signed_in? %>
-		        <%= link_to(new_purchase_path, class: "shoppingcart", data_target: ".cart_items") do %>
-	          	<i class="material-icons">shopping_cart</i>
-	          	<%= hidden_field_tag :item_id, item.id %>
-		        <% end %>
+          	<div class="shoppingcart" data-id="<%= item.id %>">
+          		<i class="material-icons">shopping_cart</i>
+          	</div>
 					<% end %>
 				<% end %>
 				<button class="btn btn-primary navbar-btn sidebarCollapse" type="button" data-toggle="collapse" data-target="#card-info<%= item.id %>" aria-expanded="false" aria-controls="card-info<%= item.id %>"><span class="glyphicon glyphicon-align-left"></span>More</button>

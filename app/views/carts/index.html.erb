@@ -1,0 +1,13 @@
+<h1>Carts#index</h1>
+<div class="container">
+	<div class="row">
+		<div id="cart-items">
+			<% @cart_items.each do |item| %>
+			<div>
+				<%= item.name %> $<%= item.price %>
+			</div>
+			<% end %>
+			<div class="total">$<%= @total %></div>
+		</div>
+	</div>
+</div>

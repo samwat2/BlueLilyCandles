@@ -5,6 +5,7 @@
     <%= csrf_meta_tags %>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
+    <script src="https://js.stripe.com/v3/"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -42,9 +43,12 @@
             <%= link_to "Sign-up", new_user_registration_path, class: "nav-item nav-link" %>
             <%= link_to "Login", new_user_session_path, class: "nav-item nav-link"  %>
           <% end %> 
-          <%= link_to current_user, class: 'nav-item nav-link' do %>
-            <i class="material-icons">shopping_cart</i>
-          <% end %>
+          <div class="cart-wrapper">
+            <div class="count"><%= @cart.items.count %></div>
+            <%= link_to carts_path, class: 'nav-item nav-link' do %>
+              <i class="material-icons">shopping_cart</i>
+            <% end %>
+          </div>
         </div>
       </div>
     </nav>
