@@ -26,8 +26,9 @@
 					<% end %>
 				<% else %>
 					<% if user_signed_in? %>
-		        <%= link_to(new_purchase_path) do %>
-		          <i class="material-icons">shopping_cart</i>
+		        <%= link_to(new_purchase_path, class: "shoppingcart", data_target: ".cart_items") do %>
+	          	<i class="material-icons">shopping_cart</i>
+	          	<%= hidden_field_tag :item_id, item.id %>
 		        <% end %>
 					<% end %>
 				<% end %>
