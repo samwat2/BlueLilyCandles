@@ -2,6 +2,8 @@ class Item < ApplicationRecord
 	has_many :user_items, dependent: :destroy
 	has_many :users, through: :user_items
 	has_many :ratings, dependent: :destroy
+	has_many :carts, dependent: :destroy
+	has_many :carts, through: :cart_items
 	has_one_attached :image, dependent: :destroy
 
 	def avg_rating

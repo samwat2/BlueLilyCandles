@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {sessions: "cart_sessions"}
+  resources :carts
+  resources :cart_items
   resources :charges
   resources :purchases
   resources :user_items
