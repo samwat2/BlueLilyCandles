@@ -16,3 +16,4 @@ $(document).on 'turbolinks:load', ->
 		else
 			$('#password-suggestions').text ''
 			$('#password-strength-bar').css('width', '0%')
+
