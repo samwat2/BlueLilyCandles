@@ -65,7 +65,6 @@
             <% end %>
             <% if logged_in?(:root_admin) %>
               <%= link_to "Add Item(s)", new_item_path , class: "nav-item nav-link" %>
-              <a class="nav-item nav-link" href="#">Create Sales Page</a>
             <% end %>
           <% else %>
             <%= link_to "Sign-up", new_user_registration_path, class: "nav-item nav-link" %>

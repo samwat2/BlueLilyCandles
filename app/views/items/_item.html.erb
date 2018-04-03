@@ -1,6 +1,6 @@
 <div class="carousel-cell" id="items-list">
 	<div class="card" id="card">
-		<div class="item" id="item-<%= item.id %>" data-info="<%= {description: item.description, name: item.name, price: item.price}.to_json %>">
+		<div class="item" id="item-<%= item.id %>" data-info="<%= {description: item.description, name: item.name, price: item.price, rating: item.avg_rating}.to_json %>">
 			<div class="card-header bg-transparent border-primary">
 				<%= item.name %>
 				<% if user_signed_in? %>
