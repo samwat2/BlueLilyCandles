@@ -2,17 +2,17 @@
 <div class="container">
 	<div class="row">
 		<div id="cart-items">
-			<% @cart_items.each do |item| %>
-			<div class="list-group">
-				<div class="list-group-item list-group-item-action flex-column align-items-start">
-          <div class="d-flex w-100 justify-content-between">
-            <h4 class="mb-1"><%= item.name %> $<%= item.price %></h4>  
+			<% @cart.cart_items.each do |cart_item| %>
+  			<div class="list-group" id="cart_item<%= cart_item.item.id %>">
+  				<div class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+              <h4 class="mb-1"><%= cart_item.item.name %> $<%= cart_item.item.price %></h4>  
+            </div>
+            <p class="mb-1"><%= cart_item.item.description %>
+              <%= link_to "Remove Item", cart_item_path(cart_item), method: :delete, remote: true, class: "remove-cart-item", data: {type: 'json'} %>
+            </p>
           </div>
-          <p class="mb-1"><%= item.description %>
-            <%= link_to "Remove Item", cart_item_path(item), method: :destroy, remote: true %>
-          </p>
-        </div>
-			</div>
+  			</div>
 			<% end %>
 		</div>
     <%= form_with url: charges_path do %>
@@ -23,7 +23,7 @@
           </div>
         <% end %>
         <label class="amount">
-          <div class="list-group-item"><span><h4><u>Amount:</u> $<%= @total %></h4></span></div>
+          <div class="list-group-item"><span><h4 class="total-amount"><u>Amount:</u> $<%= @total %></h4></span></div>
         </label>
       </article>
 

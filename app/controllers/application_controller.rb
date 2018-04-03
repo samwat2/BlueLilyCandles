@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 	before_action :configure_permitted_parameters, if: :devise_controller?
-	before_action :set_cart
+	before_action :set_cart, if: :user_signed_in?
 	
   protected
 
@@ -14,5 +14,8 @@ class ApplicationController < ActionController::Base
 
 	def set_cart
 		@cart = Cart.find(session[:cart_id])
+	rescue ActiveRecord::RecordNotFound
+		@cart = Cart.create
+		session[:cart_id] = @cart.id
 	end
 end

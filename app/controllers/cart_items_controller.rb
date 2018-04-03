@@ -9,7 +9,8 @@ class CartItemsController < ApplicationController
 
   def create
     @cart_item = @cart.cart_items.new(cart_item_params)
-    if @cart_item.save
+    if @cart_item.save!
+      p @cart
       respond_to do |format|
         format.html
         format.json {render json: {count: @cart.items.count}}
@@ -35,7 +36,7 @@ class CartItemsController < ApplicationController
     if @cart_item.destroy
       respond_to do |format|
         format.html
-        format.js
+        format.json {render json: {total: 7}}
       end
     end
   end
