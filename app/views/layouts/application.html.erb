@@ -35,6 +35,14 @@
           <% if user_signed_in? %>
             <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "nav-item nav-link" %>
             <%= link_to "Favorites", user_items_path, class: "nav-item nav-link" %>
+            <% if !logged_in?(:root_admin) %>
+              <div class="cart-wrapper">
+                <div class="count"><%= @cart.items.count %></div>
+                <%= link_to carts_path, class: 'nav-item nav-link' do %>
+                  <i class="material-icons">shopping_cart</i>
+                <% end %>
+              </div>
+            <% end %>
             <% if logged_in?(:root_admin) %>
               <%= link_to "Add Item(s)", new_item_path , class: "nav-item nav-link" %>
               <a class="nav-item nav-link" href="#">Create Sales Page</a>
@@ -43,12 +51,6 @@
             <%= link_to "Sign-up", new_user_registration_path, class: "nav-item nav-link" %>
             <%= link_to "Login", new_user_session_path, class: "nav-item nav-link"  %>
           <% end %> 
-          <div class="cart-wrapper">
-            <div class="count"><%= @cart.items.count %></div>
-            <%= link_to carts_path, class: 'nav-item nav-link' do %>
-              <i class="material-icons">shopping_cart</i>
-            <% end %>
-          </div>
         </div>
       </div>
     </nav>
