@@ -10,7 +10,7 @@ $(document).on('turbolinks:load', function(){
     $('#sidebar').find('.name span').text(info_json.name);
     $('#sidebar').find('.description span').text(info_json.description);
     $('#sidebar').find('.price span').text(info_json.price);
-    $('#sidebar').find('.rating span').text(info_json.avg_rating);
+    $('#sidebar').find('.rating span').text(info_json.rating);
     
   });
 
