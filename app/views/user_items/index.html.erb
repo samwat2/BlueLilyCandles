@@ -1,10 +1,15 @@
-<h1>Favorites</h1>
+<h1 class="wish"><u>Wishlist</u></h1>
 <ul class="list-group" id="favorites">
-	<% @user_items.each do |user_item| %>
-		<% if user_item.favorited %>
-		<li class="list-group-item" id="favorited">
-			<h2><%= user_item.item.name %></h2>
-		</li>
+	<% if current_user %>
+		<% @favorited_items.each do |favorited_item| %>
+			<% if favorited_item.favorited %>
+				<li class="list-group-item" id="favorited">
+					<h2><%= favorited_item.item.name %> $<%= favorited_item.item.price %> </h2>
+			    <div class="shoppingcart" data-id="<%= favorited_item.item.id %>">
+	      		<i class="material-icons">shopping_cart</i>
+	      	</div>
+				</li>
+			<% end %>
 		<% end %>
 	<% end %>
 </ul>

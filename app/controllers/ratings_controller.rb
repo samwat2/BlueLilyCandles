@@ -8,9 +8,9 @@ class RatingsController < ApplicationController
   end
 
   def create
-    @rating = @item.ratings.build(stars: params[:rating][:stars], user_id: current_user.id)
+    @rating = Item.find(params[:item_id]).ratings.build(stars: params[:rating][:stars], user_id: current_user.id)
     respond_to do |format|
-      if @rating.save
+      if @rating.save!
         format.html {redirect_to items_path}
         format.js
       end

@@ -1,6 +1,6 @@
 class UserItemsController < ApplicationController
   def index
-    @user_items = UserItem.all
+    @favorited_items = UserItem.all
   end
 
   def new

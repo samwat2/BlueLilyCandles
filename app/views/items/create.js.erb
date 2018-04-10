@@ -1,0 +1,10 @@
+<% if @cart.items.include?(item) %>
+	$('.shoppingcart').on('click', function(){
+		$('.material-icons').text('shopping_cart');
+	});
+<% else %>
+	$('.shoppingcart').on('click', function(){
+		$('.material-icons').text('add_shopping_cart');
+	});
+<% end %>
+

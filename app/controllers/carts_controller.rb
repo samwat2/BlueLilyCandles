@@ -1,7 +1,6 @@
 class CartsController < ApplicationController
   def index
-    @cart_items = @cart.items
-    @total = @cart_items.sum(:price)
+    @total = @cart.items.sum(:price)
   end
 
   def new

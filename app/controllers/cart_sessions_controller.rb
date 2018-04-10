@@ -6,7 +6,7 @@ class CartSessionsController < Devise::SessionsController
   end
 
   def after_login
-  	# if user already has a cart
+  	#if user already has a cart
   	if session[:cart_id]
   		@cart = current_user.carts.find(session[:cart_id])
   	else

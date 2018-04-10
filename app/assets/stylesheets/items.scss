@@ -59,7 +59,6 @@
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -webkit-align-items: center;
-  // background: black;
   .flickity-viewport {
     height: 100% !important;
   }
@@ -74,7 +73,7 @@
   background-color: rgba(0, 0, 0, 0.3);
   position: absolute;
   z-index: 1;
-  top: 376px;
+  top: 432px;
 }
 
 #sidebar ul li {
@@ -123,3 +122,11 @@
   }
 }
 
+.shoppingcart {
+  width: 30px;
+  margin: 0px;
+  border: 0px;
+  padding: 0px;
+  cursor: pointer;
+  display: inline-block;
+}
