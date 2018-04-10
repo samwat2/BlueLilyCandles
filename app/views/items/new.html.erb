@@ -1,4 +1,4 @@
-<h1>Add New Items</h1>
+<h1>Add Item</h1>
 <div class="form-group">
 	<%= form_with model: @item, data: {"parsely-validate": ''}, local: true do |f| %>
 		<%= f.text_field :name, placeholder: 'Name', required: true, class: "form-control" %>
